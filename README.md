@@ -44,10 +44,10 @@ go build -o docverter .
 docverter convert README.md
 
 # Markdown to DOCX (template directory required)
-docverter convert README.md --format docx --template ./templates/epsilon
+docverter convert README.md --format docx --template ./path/to/templates
 
 # Shorthand — "convert" is the default command
-docverter README.md -f docx --template ./templates/epsilon
+docverter README.md -f docx --template ./path/to/templates
 
 # Excalidraw to SVG
 docverter convert architecture.excalidraw
@@ -69,7 +69,7 @@ docverter batch "docs/**/*.md" --format pdf
 DOCX conversion requires a `--template` flag pointing to a directory with Word template files. The template provides styles, headers, footers, numbering, and themes — docverter replaces only the document body.
 
 ```
-templates/epsilon/
+my-templates/
   multipage-template.docx
   single-page-template.docx
   letterhead-template.docx
@@ -80,10 +80,10 @@ Select the document layout with `--type`:
 
 ```bash
 # Multipage: cover page + TOC + content (default)
-docverter convert doc.md -f docx --template ./templates/epsilon --type multipage
+docverter convert doc.md -f docx --template ./path/to/templates --type multipage
 
 # Single-page: content only
-docverter convert doc.md -f docx --template ./templates/epsilon --type single-page
+docverter convert doc.md -f docx --template ./path/to/templates --type single-page
 ```
 
 ### Frontmatter
@@ -118,7 +118,7 @@ Convert multiple files with glob patterns:
 ```bash
 docverter batch "docs/**/*.md" --format pdf
 docverter batch "**/*.excalidraw" --format png --scale 3
-docverter batch "docs/*.md" --format docx --template ./templates/epsilon --dry-run
+docverter batch "docs/*.md" --format docx --template ./path/to/templates --dry-run
 ```
 
 Use `--dry-run` to preview what would be converted without writing files.
