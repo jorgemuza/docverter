@@ -135,45 +135,6 @@ Use `--dry-run` to preview what would be converted without writing files.
 
 - [Command Reference](docs/command-reference.md) — all commands, flags, and options
 
-## Project Structure
-
-```
-docverter/
-├── main.go                        # Entry point
-├── cmd/                           # Cobra CLI commands
-│   ├── root.go                    # Root command + global flags
-│   ├── convert.go                 # Single file conversion
-│   ├── batch.go                   # Glob-based batch conversion
-│   └── version.go                 # Version command
-├── internal/
-│   ├── config/config.go           # Configuration types
-│   ├── detect/detect.go           # Input type + format detection
-│   ├── markdown/
-│   │   ├── parser.go              # Goldmark parser + frontmatter
-│   │   └── rawxml.go              # {=openxml} block extension
-│   ├── docx/
-│   │   ├── writer.go              # Orchestrator: parse → render → write ZIP
-│   │   ├── template.go            # Template loader (ZIP manipulation)
-│   │   ├── renderer.go            # AST walker → OpenXML elements
-│   │   ├── openxml.go             # Element types: Paragraph, Run, Table, etc.
-│   │   ├── styles.go              # Heading level → Word style ID mapping
-│   │   ├── cover.go               # Cover page generation
-│   │   ├── toc.go                 # Native Word TOC field
-│   │   ├── numbering.go           # List numbering definitions
-│   │   └── images.go              # Image embedding + EMU sizing
-│   ├── pdf/
-│   │   ├── writer.go              # PDF conversion orchestrator
-│   │   ├── html.go                # Goldmark → HTML with syntax highlighting
-│   │   └── chrome.go              # chromedp HTML → PDF
-│   ├── excalidraw/
-│   │   └── export.go              # Subprocess wrapper
-│   └── glob/
-│       └── glob.go                # Glob pattern matching
-├── templates/                     # Example template directory
-│   └── epsilon/
-└── testdata/                      # Test fixtures
-```
-
 ## License
 
 MIT
