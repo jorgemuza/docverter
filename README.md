@@ -29,14 +29,6 @@ curl -sSfL https://raw.githubusercontent.com/jorgemuza/docverter/main/install.sh
 go install github.com/jorgemuza/docverter@latest
 ```
 
-### Build from source
-
-```bash
-git clone https://github.com/jorgemuza/docverter-cli.git
-cd docverter-cli
-go build -o docverter .
-```
-
 ## Quick Start
 
 ```bash
