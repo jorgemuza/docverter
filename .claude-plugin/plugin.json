@@ -1,0 +1,22 @@
+{
+  "name": "docverter",
+  "description": "Convert Markdown to PDF and DOCX, and Excalidraw diagrams to SVG and PNG. Professional document generation with templates, cover pages, TOC, and batch processing.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jorge Muza",
+    "url": "https://github.com/jorgemuza"
+  },
+  "repository": "https://github.com/jorgemuza/docverter",
+  "keywords": [
+    "docverter",
+    "markdown",
+    "pdf",
+    "docx",
+    "word",
+    "excalidraw",
+    "svg",
+    "png",
+    "document",
+    "conversion"
+  ]
+}

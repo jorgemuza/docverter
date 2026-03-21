@@ -123,6 +123,14 @@ Use `--dry-run` to preview what would be converted without writing files.
 | PDF | Google Chrome or Chromium |
 | Excalidraw | Node.js + npm |
 
+## Claude Code Plugin
+
+Docverter ships as a [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin. Once installed, Claude can convert your markdown and Excalidraw files on your behalf.
+
+```bash
+claude plugin add github:jorgemuza/docverter
+```
+
 ## Documentation
 
 - [Command Reference](docs/command-reference.md) — all commands, flags, and options
