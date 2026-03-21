@@ -127,9 +127,12 @@ Use `--dry-run` to preview what would be converted without writing files.
 
 Docverter ships as a [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin. Once installed, Claude can convert your markdown and Excalidraw files on your behalf.
 
-```bash
-claude plugin add github:jorgemuza/docverter
 ```
+/plugin marketplace add jorgemuza/claude-plugins
+/plugin install docverter@jorgemuza
+```
+
+Or install directly: `/plugin install jorgemuza/docverter`
 
 ## Documentation
 
