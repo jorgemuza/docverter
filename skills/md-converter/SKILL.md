@@ -1,11 +1,11 @@
 ---
 name: md-converter
-description: "Convert Markdown files to PDF or DOCX formats, and Excalidraw diagrams to SVG or PNG using the docverter CLI. Use this skill whenever the user wants to export documentation, create professional Word documents from markdown, generate printable PDFs, convert Excalidraw diagrams to images, or produce any formatted document from .md files. Trigger on requests like 'convert to PDF', 'export as DOCX', 'make a Word document', 'generate PDF from markdown', 'create a report', 'export this doc', 'I need a PDF', 'make this into a Word file', 'export excalidraw', or any task involving markdown-to-document conversion — even if the user just says 'export' or 'print-ready' without specifying the format."
+description: "Convert Markdown files to PDF or DOCX formats, merge directories of markdown into a single PDF, and convert Excalidraw diagrams to SVG or PNG using the docverter CLI. Use this skill whenever the user wants to export documentation, create professional Word documents from markdown, generate printable PDFs, merge multiple markdown files into one document, convert Excalidraw diagrams to images, or produce any formatted document from .md files. Trigger on requests like 'convert to PDF', 'export as DOCX', 'make a Word document', 'generate PDF from markdown', 'create a report', 'export this doc', 'I need a PDF', 'make this into a Word file', 'export excalidraw', 'merge docs', 'combine markdown files', 'directory to PDF', or any task involving markdown-to-document conversion — even if the user just says 'export' or 'print-ready' without specifying the format."
 ---
 
-# Docverter — Markdown to PDF/DOCX, Excalidraw to SVG/PNG
+# Docverter — Markdown to PDF/DOCX, Directory Merge, Excalidraw to SVG/PNG
 
-Convert markdown files to professional PDF and DOCX documents, and Excalidraw diagrams to SVG/PNG images using the `docverter` CLI.
+Convert markdown files to professional PDF and DOCX documents, merge entire directory trees of markdown into a single PDF, and export Excalidraw diagrams to SVG/PNG images using the `docverter` CLI.
 
 ## Prerequisites
 
@@ -35,6 +35,12 @@ docverter convert architecture.excalidraw --format png --scale 3
 # Batch convert
 docverter batch "docs/**/*.md" --format pdf
 docverter batch "**/*.excalidraw" --format png
+
+# Merge directory into single PDF
+docverter merge docs/design/ -o design-docs.pdf
+
+# Preview merge order
+docverter merge docs/design/ --dry-run
 
 # Preview (dry run)
 docverter batch "docs/*.md" --format docx --template ./templates --dry-run
@@ -72,6 +78,25 @@ docverter convert doc.md --highlight monokai
 ```
 
 Available: `github` (default), `monokai`, `solarized-light`, `atom-one-dark`.
+
+## Merge Command
+
+Merge an entire directory tree of markdown files into a single PDF with a cover page, table of contents, and page breaks between files.
+
+```bash
+# Basic merge
+docverter merge docs/design/ -o design-docs.pdf
+
+# Preview file ordering
+docverter merge docs/design/ --dry-run
+
+# With custom highlight style
+docverter merge docs/design/ -o design-docs.pdf --highlight monokai
+```
+
+**File ordering per directory:** INDEX.md first (case-insensitive), then regular `.md` files alphabetically, then subdirectories alphabetically (depth-first recursion).
+
+The `--output/-o` flag is required for merge.
 
 ## Common Workflows
 

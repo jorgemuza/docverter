@@ -74,6 +74,54 @@ docverter batch "**/*.excalidraw" --format png
 docverter batch "docs/*.md" --format docx --template ./templates/epsilon --dry-run
 ```
 
+### `merge`
+
+Merge all markdown files in a directory tree into a single PDF. Files are ordered with INDEX.md first per directory, then regular `.md` files alphabetically, then subdirectories recursively.
+
+```
+docverter merge <directory> [flags]
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `<directory>` | Path to the root directory containing markdown files |
+
+**Required flags:**
+
+| Flag | Short | Description |
+|------|-------|-------------|
+| `--output` | `-o` | Output PDF file path |
+
+**Examples:**
+
+```bash
+# Merge all markdown in a directory into a single PDF
+docverter merge docs/design/ -o design-docs.pdf
+
+# Preview file order without converting
+docverter merge docs/design/ --dry-run
+
+# With custom highlight style
+docverter merge docs/design/ -o design-docs.pdf --highlight monokai
+
+# With debug logging
+docverter merge docs/design/ -o design-docs.pdf -v
+```
+
+**Output structure:**
+
+The generated PDF includes:
+1. **Cover page** with the directory name as title and file count
+2. **Table of Contents** generated from all H1/H2 headings across files
+3. **Sections** — each file rendered with a page break and a subtle header showing the file's relative path
+
+**File ordering per directory:**
+1. `INDEX.md` (case-insensitive) — always first
+2. Regular `.md` files — sorted alphabetically
+3. Subdirectories — sorted alphabetically, each processed recursively (depth-first)
+
 ### `version`
 
 Print the version number.
